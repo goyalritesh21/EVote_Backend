@@ -34,7 +34,7 @@ clf = cv2.face.LBPHFaceRecognizer_create()
 clf.read("classifier.yml")
 
 # Capturing real time video stream. 0 for built-in web-cams, 0 or -1 for external web-cams
-video_capture = cv2.VideoCapture(-1)
+video_capture = cv2.VideoCapture(0)
 
 while True:
     # Reading image from video stream

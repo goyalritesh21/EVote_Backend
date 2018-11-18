@@ -1,6 +1,8 @@
+import cv2
+import os
 import numpy as np
-from PIL import  Image
-import os, cv2
+from PIL import Image
+
 
 # Method to train custom classifier to recognize face
 def train_classifer(data_dir):
@@ -23,7 +25,7 @@ def train_classifer(data_dir):
     # Train and save classifier
     clf = cv2.face.LBPHFaceRecognizer_create()
     clf.train(faces, ids)
-    clf.write("classifier.xml")
+    clf.write("classifier.yml")
 
 
 train_classifer("data")
