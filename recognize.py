@@ -11,10 +11,11 @@ def draw_boundary(img, classifier, scaleFactor, minNeighbors, color, text, clf):
     for (x, y, w, h) in features:
         cv2.rectangle(img, (x,y), (x+w, y+h), color, 2)
         # Predicting the id of the user
-        id, _ = clf.predict(gray_img[y:y+h, x:x+w])
+        id, predictionScore = clf.predict(gray_img[y:y+h, x:x+w])
         # Check for id of user and label the rectangle accordingly
-        if id==1:
-            cv2.putText(img, "Ali", (x, y-4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 1, cv2.LINE_AA)
+
+        if predictionScore > 65:
+            cv2.putText(img, str(id), (x, y-4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 1, cv2.LINE_AA)
         coords = [x, y, w, h]
 
     return coords

@@ -20,7 +20,7 @@ def draw_boundary(img, classifier, scaleFactor, minNeighbors, color, text):
     return coords
 
 # Method to detect the features
-def detect(img, faceCascade, img_id):
+def detect(img, faceCascade, img_id, user_id):
     color = {"blue":(255,0,0), "red":(0,0,255), "green":(0,255,0), "white":(255,255,255)}
     coords = draw_boundary(img, faceCascade, 1.1, 10, color['blue'], "Face")
     # If feature is detected, the draw_boundary method will return the x,y coordinates and width and height of rectangle else the length of coords will be 0
@@ -28,7 +28,7 @@ def detect(img, faceCascade, img_id):
         # Updating region of interest by cropping image
         roi_img = img[coords[1]:coords[1]+coords[3], coords[0]:coords[0]+coords[2]]
         # Assign unique id to each user
-        user_id = 1
+
         # img_id to make the name of each image unique
         generate_dataset(roi_img, user_id, img_id)
 
@@ -44,14 +44,14 @@ video_capture = cv2.VideoCapture(0)
 
 # Initialize img_id with 0
 img_id = 0
-
+user_id = int(input("Enter Aadhar Number: "))
 while True:
     if img_id % 50 == 0:
         print("Collected ", img_id," images")
     # Reading image from video stream
     _, img = video_capture.read()
     # Call method we defined above
-    img = detect(img, faceCascade, img_id)
+    img = detect(img, faceCascade, img_id, user_id)
     # Writing processed image in a new window
     cv2.imshow("face detection", img)
     img_id += 1
