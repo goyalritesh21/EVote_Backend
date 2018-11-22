@@ -30,4 +30,4 @@ NOTE: Keep only face in frame while collecting data.
 
 1. Run `classifier.py` on python command prompt. This will train the model for the faces.
  
-1. Run `face_detection.py` on python command prompt. This will open camera and tells about the detected face.
+1. Run `test.py` on python command prompt specifying the image filename.
