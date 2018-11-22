@@ -5,7 +5,7 @@ from PIL import Image
 
 
 # Method to train custom classifier to recognize face
-def train_classifer(data_dir):
+def train_classifer(data_dir: object) -> object:
     # Read all the images in custom data-set
     path = [os.path.join(data_dir, f) for f in os.listdir(data_dir)]
     faces = []
@@ -16,7 +16,7 @@ def train_classifer(data_dir):
         img = Image.open(image).convert('L')
         imageNp = np.array(img, 'uint8')
         id = int(os.path.split(image)[1].split(".")[1])
-
+        print(id)
         faces.append(imageNp)
         ids.append(id)
 
