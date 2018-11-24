@@ -1,0 +1,14 @@
+{
+	"name": "eth_voting",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"dependencies": {
+		"ethereumjs-testrpc": "^6.0.3",
+		"solc": "^0.4.19",
+		"web3": "^0.20.1"
+	},
+	"scripts": {
+		"testrpc": "testrpc"
+	}
+}
